@@ -1,0 +1,22 @@
+@import "tailwindcss";
+.admin-sidebar-link {
+  background-color: #18181b;
+  color: #fff;
+  font-weight: 500;display: block;
+  padding: 0.75rem 1.25rem;
+  transition: all 0.3s ease;
+}
+
+.admin-sidebar-link:hover {
+  background-color: #27272a;
+  color: #fff;
+}
+
+.admin-sidebar-link.active {
+  background-color: #f97316;
+  color: #fff;
+  font-weight: 600;
+}
+.min-h-screen {
+  min-height:90vh;
+}
