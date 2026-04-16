@@ -1,0 +1,281 @@
+@use "sass:color";
+
+// Variables
+$gold-primary: #FFD700;
+$blue-dark: #0f172a;
+$blue-light: #4A90E2;
+$white: #ffffff;
+$gray-light: #f5f5f5;
+$gray-medium: #737373;
+$gray-dark: #404040;
+$red: #E53935;
+$peach-light: #FFF5E6;
+
+// Font Family
+$font-family: var(--font-montserrat), -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+
+.testimonialsWrapper {
+  width: 100%;
+  position: relative;
+  padding: 2rem 0;
+}
+
+.carouselContainer {
+  padding: 1rem 0 4rem 0;
+  position: relative;
+}
+
+.carouselItem {
+  padding: 0 0.75rem;
+  height: 100%;
+  display: flex;
+  align-items: stretch;
+
+  @media (max-width: 768px) {
+    padding: 0 0.5rem;
+  }
+}
+
+.testimonialCard {
+  background: $white;
+  border-radius: 12px;
+  padding: 2rem;
+  margin: 0 auto;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgba($gray-medium, 0.1);
+  transition: all 0.3s ease;
+  position: relative;
+  min-height: 320px;
+
+  &:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+    transform: translateY(-2px);
+  }
+
+  @media (max-width: 768px) {
+    padding: 1.5rem;
+    min-height: 300px;
+  }
+}
+
+.quoteIcon {
+  position: absolute;
+  top: 1.5rem;
+  left: 1.5rem;
+  z-index: 0;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.25rem;
+  line-height: 1;
+
+  @media (max-width: 768px) {
+    top: 1rem;
+    left: 1rem;
+  }
+}
+
+.quoteMark {
+  font-size: 3.5rem;
+  font-family: Georgia, serif;
+  color: $blue-light;
+  opacity: 0.25;
+  font-weight: bold;
+  line-height: 1;
+  display: inline-block;
+
+  @media (max-width: 768px) {
+    font-size: 2.75rem;
+  }
+}
+
+.cardContent {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding-top: 1rem;
+}
+
+.customerName {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: $blue-dark;
+  margin: 0 0 0.25rem 0;
+  font-family: $font-family;
+
+  @media (max-width: 768px) {
+    font-size: 1rem;
+  }
+}
+
+.location {
+  font-size: 0.9375rem;
+  color: $gray-medium;
+  margin: 0 0 1.25rem 0;
+  font-weight: 400;
+  font-family: $font-family;
+
+  @media (max-width: 768px) {
+    font-size: 0.875rem;
+    margin-bottom: 1rem;
+  }
+}
+
+.reviewText {
+  font-size: 0.9375rem;
+  color: $gray-dark;
+  line-height: 1.6;
+  margin: 0 0 1.5rem 0;
+  flex: 1;
+  font-family: $font-family;
+
+  @media (max-width: 768px) {
+    font-size: 0.875rem;
+    margin-bottom: 1.25rem;
+  }
+}
+
+.readMore {
+  color: $red;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  padding: 0;
+  margin-left: 0.25rem;
+  text-decoration: underline;
+  font-family: $font-family;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: color.adjust($red, $lightness: -10%);
+  }
+
+  @media (max-width: 768px) {
+    font-size: 0.875rem;
+  }
+}
+
+.rating {
+  display: flex;
+  gap: 0.25rem;
+  margin-bottom: 1.25rem;
+  align-items: center;
+
+  @media (max-width: 768px) {
+    margin-bottom: 1rem;
+  }
+}
+
+.star {
+  width: 20px;
+  height: 20px;
+
+  @media (max-width: 768px) {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: auto;
+  padding-top: 1rem;
+  border-top: 1px solid rgba($gray-medium, 0.1);
+}
+
+.googleLogo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+
+  svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  @media (max-width: 768px) {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+.timeAgo {
+  font-size: 0.875rem;
+  color: $gray-medium;
+  font-weight: 400;
+  font-family: $font-family;
+
+  @media (max-width: 768px) {
+    font-size: 0.8125rem;
+  }
+}
+
+// Custom carousel arrow styles
+.testimonialsWrapper :global(.react-multi-carousel-list) {
+  position: relative;
+}
+
+.testimonialsWrapper :global(.react-multi-carousel-arrow) {
+  background-color: rgba($white, 0.9);
+  border: 1px solid rgba($gray-medium, 0.2);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  z-index: 10;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: $white;
+    border-color: $gold-primary;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  &::before {
+    font-size: 16px;
+    color: $blue-dark;
+  }
+
+  @media (max-width: 768px) {
+    width: 36px;
+    height: 36px;
+
+    &::before {
+      font-size: 14px;
+    }
+  }
+}
+
+.testimonialsWrapper :global(.react-multi-carousel-arrow--left) {
+  left: -20px;
+
+  @media (max-width: 1024px) {
+    left: -10px;
+  }
+
+  @media (max-width: 768px) {
+    left: -5px;
+  }
+}
+
+.testimonialsWrapper :global(.react-multi-carousel-arrow--right) {
+  right: -20px;
+
+  @media (max-width: 1024px) {
+    right: -10px;
+  }
+
+  @media (max-width: 768px) {
+    right: -5px;
+  }
+}
+

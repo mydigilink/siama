@@ -1,0 +1,281 @@
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: 20px;
+  animation: fadeIn 0.2s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.modal {
+  background: white;
+  border-radius: 16px;
+  width: 100%;
+  max-width: 480px;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.closeButton {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: none;
+  border: none;
+  font-size: 32px;
+  line-height: 1;
+  cursor: pointer;
+  color: #666;
+  transition: color 0.2s;
+  z-index: 1;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    color: #000;
+  }
+}
+
+.backButton {
+  background: none;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  color: #666;
+  transition: color 0.2s;
+  margin-bottom: 16px;
+  padding: 8px 0;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+
+  &:hover {
+    color: #000;
+  }
+}
+
+.content {
+  padding: 48px 32px 32px;
+
+  @media (max-width: 640px) {
+    padding: 40px 24px 24px;
+  }
+}
+
+.title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 12px;
+
+  @media (max-width: 640px) {
+    font-size: 24px;
+  }
+}
+
+.subtitle {
+  font-size: 16px;
+  color: #666;
+  margin: 0 0 32px;
+  line-height: 1.5;
+
+  strong {
+    color: #1a1a1a;
+    font-weight: 600;
+  }
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+.phoneInput {
+  display: flex;
+  align-items: center;
+  border: 2px solid #e5e5e5;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: border-color 0.2s;
+
+  &:focus-within {
+    border-color: #d4af37;
+  }
+}
+
+.countryCode {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 16px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #666;
+  background-color: #f5f5f5;
+  height: 56px;
+  border-right: 2px solid #e5e5e5;
+}
+
+.input,
+.otpInput {
+  flex: 1;
+  padding: 16px;
+  font-size: 16px;
+  border: 2px solid #e5e5e5;
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.2s;
+
+  &::placeholder {
+    color: #999;
+  }
+
+  &:focus {
+    border-color: #d4af37;
+  }
+
+  &:disabled {
+    background-color: #f5f5f5;
+    cursor: not-allowed;
+  }
+}
+
+.input {
+  border: none;
+  padding-left: 16px;
+}
+
+.otpInput {
+  text-align: center;
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: 8px;
+  padding: 16px;
+
+  @media (max-width: 640px) {
+    font-size: 20px;
+    letter-spacing: 6px;
+  }
+}
+
+.error {
+  background-color: #fff5f5;
+  border: 1px solid #feb2b2;
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-size: 14px;
+  color: #c53030;
+  margin: -8px 0 0;
+}
+
+.submitButton {
+  width: 100%;
+  padding: 16px 24px;
+  font-size: 16px;
+  font-weight: 600;
+  color: white;
+  background-color: #d4af37;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+
+  &:hover:not(:disabled) {
+    background-color: #c19f2f;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
+  }
+
+  &:active:not(:disabled) {
+    transform: translateY(0);
+  }
+
+  &:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+  }
+}
+
+.resendSection {
+  text-align: center;
+  margin-top: -8px;
+}
+
+.resendText {
+  font-size: 14px;
+  color: #666;
+  margin: 0;
+
+  strong {
+    color: #d4af37;
+    font-weight: 600;
+  }
+}
+
+.resendButton {
+  background: none;
+  border: none;
+  font-size: 14px;
+  font-weight: 600;
+  color: #d4af37;
+  cursor: pointer;
+  transition: color 0.2s;
+  padding: 8px;
+
+  &:hover:not(:disabled) {
+    color: #c19f2f;
+    text-decoration: underline;
+  }
+
+  &:disabled {
+    color: #ccc;
+    cursor: not-allowed;
+  }
+}

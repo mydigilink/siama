@@ -1,0 +1,135 @@
+.container {
+  /* max-width: 1100px;
+  margin: auto;
+  padding: 20px;
+  font-family: Arial; */
+}
+
+/* HEADER */
+.header {
+  display: flex;
+  justify-content: space-between;
+  background: #f5f6f8;
+  padding: 20px;
+  border-radius: 10px;
+  flex-wrap: wrap;
+}
+
+.type {
+  color: #666;
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.star {
+  color: rgb(227, 179, 22);
+}
+
+.location {
+  margin-top: 10px; display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.address {
+  color: #555;
+}
+.h3{font-size: 2rem;}
+.callBtn {
+     background: #000000;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    min-width: 150px;
+    display: flex;margin-top: 15px;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+}
+
+/* GALLERY */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.gallery img {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+/* TABS */
+.tabs {
+  display: flex;
+  gap: 15px;
+  margin-top: 20px;
+  border-bottom: 1px solid #ddd;
+}
+
+.tab {
+  padding: 10px;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.active {
+  border-bottom: 3px solid #000000;
+  color: #000000;
+}
+
+/* CONTENT */
+.content {
+  padding: 20px 0;
+}
+
+/* MAP */
+.mapContainer {
+  margin-top: 30px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.faqSection {
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+.servicesList {
+  list-style: none;
+  padding: 0;display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 15px;
+}
+.servicesList li{min-width: 19%}
+.faqItem {
+  border-bottom: 1px solid #d6d6d6;
+  padding: 10px 0;
+}
+
+.faqQuestion {
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 10px 0;
+}
+
+.faqAnswer {
+  color: #1e1e1e;
+  margin-top: 5px;
+}
+.review{margin-bottom: 25px;}
+.left{    display: flex;
+    gap: 25px;}

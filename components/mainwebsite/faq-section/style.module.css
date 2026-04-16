@@ -1,0 +1,54 @@
+/* FAQ Item */
+.faqItem {
+  border: 1px solid #eee;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  background: #fff;
+}
+
+/* Active state */
+.active {
+  border-color: #f59e0b;
+  background: #fffbeb;
+}
+
+/* Question button */
+.faqQuestion {
+  width: 100%;
+  padding: 14px;
+  font-size: 14px;
+  font-weight: 600;
+  text-align: left;
+  background: none;
+  border: none;
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+/* Icon */
+.icon {
+  font-size: 18px;
+}
+
+/* Answer wrapper (animation) */
+.faqAnswerWrapper {
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  padding: 0 14px;
+}
+
+/* When open */
+.open {
+  max-height: 500px;
+  padding-bottom: 12px;
+}
+
+/* Answer text */
+.faqAnswer {
+  font-size: 13px;
+  color: #555;
+}

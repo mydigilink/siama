@@ -1,0 +1,608 @@
+@use "sass:color";
+
+// Variables
+$gold-primary: #FFD700;
+$blue-dark: #0f172a;
+$white: #ffffff;
+$gray-light: #f5f5f5;
+$gray-medium: #737373;
+$gray-dark: #404040;
+$peach-light: #FFF5E6;
+
+// Font Family
+$font-family: var(--font-montserrat), -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+
+.pageWrapper {
+  width: 100%;
+}
+
+// Hero Section
+.heroSection {
+  width: 100%;
+  position: relative;
+}
+
+.heroImageContainer {
+  position: relative;
+  width: 100%;
+  height: 70vh;
+  min-height: 600px;
+  overflow: hidden;
+  background: $gray-light;
+
+  @media (max-width: 768px) {
+    height: 60vh;
+    min-height: 500px;
+  }
+
+  @media (max-width: 480px) {
+    height: 50vh;
+    min-height: 400px;
+  }
+}
+
+.heroImage {
+  object-fit: cover;
+  object-position: center;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  filter: brightness(1.05) contrast(1.1);
+  transition: transform 0.3s ease;
+  will-change: transform;
+}
+
+.heroOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    180deg,
+    rgba($blue-dark, 0.3) 0%,
+    rgba($blue-dark, 0.2) 50%,
+    rgba($blue-dark, 0.4) 100%
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(0.5px);
+}
+
+.heroContent {
+  text-align: center;
+  color: $white;
+  padding: 2rem;
+  max-width: 800px;
+  z-index: 1;
+}
+
+.heroTitle {
+  font-size: 4rem;
+  font-weight: 800;
+  margin: 0 0 1rem 0;
+  font-family: $font-family;
+  letter-spacing: -1px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+
+  @media (max-width: 768px) {
+    font-size: 2.5rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 2rem;
+  }
+}
+
+.heroSubtitle {
+  font-size: 1.5rem;
+  font-weight: 400;
+  margin: 0;
+  font-family: $font-family;
+  line-height: 1.6;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+
+  @media (max-width: 768px) {
+    font-size: 1.25rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1.125rem;
+  }
+}
+
+// Content Section
+.contentSection {
+  padding: 6rem 0;
+  background: linear-gradient(180deg, rgba($peach-light, 0.2) 0%, $white 50%, rgba($peach-light, 0.1) 100%);
+  font-family: $font-family;
+
+  @media (max-width: 768px) {
+    padding: 4rem 0;
+  }
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 2rem;
+
+  @media (max-width: 768px) {
+    padding: 0 1.5rem;
+  }
+}
+
+.section {
+  margin-bottom: 4rem;
+
+  @media (max-width: 768px) {
+    margin-bottom: 3rem;
+  }
+}
+
+.sectionTitle {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: $blue-dark;
+  margin: 0 0 1.5rem 0;
+  font-family: $font-family;
+  position: relative;
+  padding-bottom: 1rem;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, $gold-primary, transparent);
+    border-radius: 2px;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 2rem;
+    margin-bottom: 1.25rem;
+  }
+}
+
+.paragraph {
+  font-size: 1.125rem;
+  color: $gray-dark;
+  line-height: 1.8;
+  margin: 0 0 1.5rem 0;
+  font-family: $font-family;
+
+  @media (max-width: 768px) {
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+}
+
+// Steps List
+.stepsList {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.stepItem {
+  padding: 1.5rem;
+  background: $white;
+  border-radius: 12px;
+  border-left: 4px solid $gold-primary;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.stepTitle {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: $blue-dark;
+  margin: 0 0 0.75rem 0;
+  font-family: $font-family;
+}
+
+.stepDescription {
+  font-size: 1rem;
+  color: $gray-dark;
+  line-height: 1.7;
+  margin: 0;
+  font-family: $font-family;
+}
+
+// Concerns List
+.concernsList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+}
+
+.concernsList li {
+  padding: 1rem 1.5rem;
+  background: $white;
+  border-radius: 8px;
+  border-left: 3px solid $gold-primary;
+  font-size: 1rem;
+  color: $gray-dark;
+  font-family: $font-family;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+// Types Grid
+.typesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.typeCard {
+  background: $white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba($gray-medium, 0.1);
+}
+
+.typeIcon {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.typeTitle {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: $blue-dark;
+  margin: 0 0 1rem 0;
+  font-family: $font-family;
+}
+
+.typeFeatures {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.typeFeatures li {
+  font-size: 0.9375rem;
+  color: $gray-dark;
+  line-height: 1.6;
+  padding-left: 1.5rem;
+  position: relative;
+  font-family: $font-family;
+
+  &::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: $gold-primary;
+    font-weight: bold;
+    font-size: 1.25rem;
+  }
+}
+
+// Benefits List
+.benefitsList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+}
+
+.benefitsList li {
+  padding: 1rem 1.5rem;
+  background: $white;
+  border-radius: 8px;
+  border-left: 3px solid $gold-primary;
+  font-size: 1rem;
+  color: $gray-dark;
+  font-family: $font-family;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  position: relative;
+  padding-left: 2.5rem;
+
+  &::before {
+    content: '✓';
+    position: absolute;
+    left: 1rem;
+    color: $gold-primary;
+    font-weight: bold;
+    font-size: 1.25rem;
+  }
+}
+
+// Candidates List
+.candidatesList {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 2rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.candidatesList li {
+  padding: 0.875rem 1.25rem;
+  background: rgba($gold-primary, 0.1);
+  border-radius: 8px;
+  font-size: 1rem;
+  color: $gray-dark;
+  font-family: $font-family;
+  border-left: 3px solid $gold-primary;
+}
+
+.notRecommended {
+  padding: 1.5rem;
+  background: rgba(239, 68, 68, 0.1);
+  border-radius: 12px;
+  border-left: 4px solid #EF4444;
+  margin-top: 1.5rem;
+
+  strong {
+    font-size: 1.125rem;
+    color: $blue-dark;
+    font-family: $font-family;
+    display: block;
+    margin-bottom: 1rem;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  li {
+    font-size: 1rem;
+    color: $gray-dark;
+    font-family: $font-family;
+    padding-left: 1.5rem;
+    position: relative;
+
+    &::before {
+      content: '•';
+      position: absolute;
+      left: 0;
+      color: #EF4444;
+      font-weight: bold;
+      font-size: 1.25rem;
+    }
+  }
+}
+
+// Procedure Steps
+.procedureSteps {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.procedureStep {
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+  padding: 1.5rem;
+  background: $white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  border-left: 4px solid $gold-primary;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 1rem;
+  }
+}
+
+.stepNumber {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, $gold-primary, #FFA500);
+  color: $white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: 700;
+  font-family: $font-family;
+  flex-shrink: 0;
+}
+
+.stepContent {
+  flex: 1;
+}
+
+.procedureTime {
+  padding: 1.5rem;
+  background: rgba($gold-primary, 0.1);
+  border-radius: 8px;
+  font-size: 1.125rem;
+  color: $blue-dark;
+  font-family: $font-family;
+  text-align: center;
+  margin-top: 1.5rem;
+}
+
+// Lists
+.comfortList,
+.recoveryList,
+.sessionsList,
+.resultsList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.comfortList li,
+.recoveryList li,
+.sessionsList li,
+.resultsList li {
+  padding: 0.875rem 1.25rem;
+  background: $white;
+  border-radius: 8px;
+  font-size: 1rem;
+  color: $gray-dark;
+  font-family: $font-family;
+  border-left: 3px solid $gold-primary;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+// Care Section
+.careSection {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin: 3rem 0;
+}
+
+.careCard {
+  background: $white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  border-top: 4px solid $gold-primary;
+}
+
+.careTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: $blue-dark;
+  margin: 0 0 1.5rem 0;
+  font-family: $font-family;
+}
+
+.careList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.careList li {
+  font-size: 1rem;
+  color: $gray-dark;
+  line-height: 1.6;
+  padding-left: 1.5rem;
+  position: relative;
+  font-family: $font-family;
+
+  &::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: $gold-primary;
+    font-weight: bold;
+    font-size: 1.25rem;
+  }
+}
+
+// Side Effects
+.sideEffects {
+  padding: 1.5rem;
+  background: rgba($blue-dark, 0.05);
+  border-radius: 12px;
+  margin-top: 1.5rem;
+}
+
+.sideEffectsTitle {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: $blue-dark;
+  margin: 0 0 1rem 0;
+  font-family: $font-family;
+}
+
+.sideEffectsList {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.sideEffectsList li {
+  font-size: 1rem;
+  color: $gray-dark;
+  font-family: $font-family;
+  padding-left: 1.5rem;
+  position: relative;
+
+  &::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: $gray-medium;
+    font-weight: bold;
+  }
+}
+
+.sideEffectsNote {
+  font-size: 0.9375rem;
+  color: $gray-medium;
+  font-style: italic;
+  margin: 0;
+  font-family: $font-family;
+}
+
+// Comparison Table
+.comparisonTable {
+  background: $white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  margin-top: 2rem;
+}
+
+.tableHeader {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: linear-gradient(135deg, $blue-dark, color.adjust($blue-dark, $lightness: -5%));
+  color: $white;
+}
+
+.tableRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-top: 1px solid rgba($gray-medium, 0.1);
+
+  &:nth-child(even) {
+    background: rgba($gray-light, 0.3);
+  }
+}
+
+.tableCell {
+  padding: 1.25rem 1.5rem;
+  font-size: 1rem;
+  color: $gray-dark;
+  font-family: $font-family;
+  line-height: 1.6;
+
+  .tableHeader & {
+    color: $white;
+    font-weight: 600;
+  }
+
+  @media (max-width: 768px) {
+    padding: 1rem;
+    font-size: 0.9375rem;
+  }
+}
+

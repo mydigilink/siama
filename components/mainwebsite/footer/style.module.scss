@@ -1,0 +1,793 @@
+// Variables
+$dark-blue: #0a1929;
+$dark-blue-light: #132f4c;
+$blue-primary: #000000;
+$blue-secondary: #3b82f6;
+$blue-dark: #0f172a;
+$gold-primary: #FFD700;
+$gold-secondary: #FFA500;
+$white: #ffffff;
+$black: #000000;
+$gray-light: #b0b0b0;
+$gray-lighter: #d0d0d0;
+$whatsapp-green: #25D366;
+$whatsapp-green-dark: #128C7E;
+
+// Font Family
+$font-family: var(--font-montserrat), -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+
+// Peach color for services menu background
+$peach-light: #FFF5E6;
+$peach-medium: #FFE5CC;
+
+// Services Menu Section
+.servicesMenuSection {
+  background: $peach-light;
+  padding: 1.75rem 0;
+  position: relative;
+  font-family: $font-family;
+
+  @media (max-width: 768px) {
+    padding: 1.5rem 0;
+  }
+}
+
+.servicesMenuContainer {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+
+  @media (max-width: 768px) {
+    padding: 0 1.5rem;
+  }
+}
+.partnerHeading{font-size: 1.2rem; margin-bottom: 15px;}
+.partnerMention{margin-bottom: 20px;}
+.servicesMenu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+
+  @media (max-width: 768px) {
+    gap: 0.5rem;
+  }
+
+  @media (max-width: 480px) {
+    gap: 0.375rem;
+  }
+}
+
+.serviceMenuItem {
+  padding: 0.75rem 1.5rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  font-family: $font-family;
+  color: $blue-dark;
+  background: $white;
+  border: 1.5px solid rgba($blue-dark, 0.15);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  white-space: nowrap;
+  text-transform: none;
+  letter-spacing: 0.2px;
+  box-shadow: 0 1px 3px rgba($blue-dark, 0.08);
+  position: relative;
+  opacity: 1;
+  transform: scale(1);
+
+  &:hover:not(.serviceMenuItemActive) {
+    background: rgba($white, 0.95);
+    border-color: rgba($gold-primary, 0.5);
+    transform: translateY(-1px) scale(1.02);
+    box-shadow: 0 2px 8px rgba($gold-primary, 0.2);
+  }
+
+  &:active:not(.serviceMenuItemActive) {
+    transform: translateY(0) scale(1);
+  }
+
+  @media (max-width: 768px) {
+    padding: 0.625rem 1.25rem;
+    font-size: 0.875rem;
+  }
+
+  @media (max-width: 480px) {
+    padding: 0.5rem 1rem;
+    font-size: 0.8125rem;
+  }
+}
+
+.serviceMenuItemActive {
+  background: $blue-primary;
+  color: $white;
+  border-color: $blue-primary;
+  box-shadow: 0 2px 10px rgba($blue-primary, 0.3);
+  transform: scale(1.05);
+  animation: slideInActive 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:hover {
+    background: #2563eb;
+    box-shadow: 0 3px 12px rgba($blue-primary, 0.35);
+    transform: scale(1.06);
+  }
+}
+
+@keyframes slideInActive {
+  0% {
+    transform: scale(0.95);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.08);
+  }
+  100% {
+    transform: scale(1.05);
+    opacity: 1;
+  }
+}
+
+// Contact Section
+.contactSection {
+  background: linear-gradient(180deg, rgba($gray-light, 0.3) 0%, rgba($white, 0.5) 100%);
+  padding: 5rem 0;
+  position: relative;
+  font-family: $font-family;
+
+  @media (max-width: 768px) {
+    padding: 3.5rem 0;
+  }
+}
+
+.contactContainer {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+
+  @media (max-width: 768px) {
+    padding: 0 1.5rem;
+  }
+}
+
+.contactHeader {
+  text-align: center;
+  margin-bottom: 3.5rem;
+
+  @media (max-width: 768px) {
+    margin-bottom: 2.5rem;
+  }
+}
+
+.contactTitle {
+  font-size: 2.75rem;
+  font-weight: 700;
+  color: $blue-dark;
+  margin: 0 0 1rem 0;
+  font-family: $font-family;
+  line-height: 1.2;
+
+  @media (max-width: 768px) {
+    font-size: 2.25rem;
+    margin-bottom: 0.875rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 2rem;
+  }
+}
+
+.contactSubtitle {
+  font-size: 1.25rem;
+  color: rgba($blue-dark, 0.7);
+  margin: 0;
+  font-family: $font-family;
+  font-weight: 400;
+  line-height: 1.6;
+
+  @media (max-width: 768px) {
+    font-size: 1.125rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1rem;
+  }
+}
+
+.contactGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: start;
+
+  @media (max-width: 968px) {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+}
+
+.contactFormColumn {
+  width: 100%;
+}
+
+.contactInfoColumn {
+  width: 100%;
+  display: flex;
+  align-items: stretch;
+}
+
+.contactInfoCard {
+  background: linear-gradient(135deg, rgba($gold-primary, 0.12) 0%, rgba($gold-secondary, 0.08) 100%);
+  border-radius: 20px;
+  padding: 1.5rem;
+  width: 100%;
+  box-shadow: 0 8px 30px rgba($black, 0.08);
+  border: 1px solid rgba($gold-primary, 0.2);
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, $gold-primary 0%, $gold-secondary 100%);
+  }
+
+  @media (max-width: 768px) {
+    padding: 2.5rem 2rem;
+    border-radius: 16px;
+  }
+}
+
+.contactInfoTitle {
+  font-size: 2rem;
+  font-weight: 700;
+  color: $blue-dark;
+  margin: 0 0 1.5rem 0;
+  font-family: $font-family;
+
+  @media (max-width: 768px) {
+    font-size: 1.75rem;
+    margin-bottom: 2rem;
+  }
+}
+
+.contactInfoList {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+  @media (max-width: 768px) {
+    gap: 1.75rem;
+  }
+}
+
+.contactInfoGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-top: 2rem;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 1.75rem;
+  }
+}
+
+.contactInfoItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.25rem;
+}
+
+.contactIcon {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: rgba($blue-dark, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba($blue-dark, 0.12);
+
+  @media (max-width: 768px) {
+    width: 44px;
+    height: 44px;
+  }
+}
+
+.iconSvg {
+  width: 24px;
+  height: 24px;
+  color: $blue-dark;
+
+  @media (max-width: 768px) {
+    width: 22px;
+    height: 22px;
+  }
+}
+
+.contactInfoContent {
+  flex: 1;
+}
+
+.contactInfoHeading {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: $blue-dark;
+  font-family: $font-family;
+
+  @media (max-width: 768px) {
+    font-size: 1.125rem;
+  }
+}
+
+.addressLink {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  transition: opacity 0.2s ease;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  &:focus {
+    outline: 2px solid $blue-secondary;
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+}
+
+.contactInfoText {
+  font-size: 0.9375rem;
+  color: rgba($blue-dark, 0.8);
+  margin: 0;
+  line-height: 1.6;
+  font-family: $font-family;
+
+  @media (max-width: 768px) {
+    font-size: 0.9375rem;
+  }
+}
+
+.mapContainer {
+  margin-top: 1.5rem;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba($black, 0.1);
+  border: 1px solid rgba($blue-dark, 0.1);
+}
+
+.mapIframe {
+  width: 100%;
+  height: 200px;
+  border: none;
+  display: block;
+
+  @media (max-width: 768px) {
+    height: 180px;
+  }
+}
+
+.contactInfoLink {
+  color: rgba($blue-dark, 0.9);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  border-bottom: 1px solid transparent;
+
+  &:hover {
+    color: $gold-primary;
+    border-bottom-color: $gold-primary;
+  }
+}
+
+.footer {
+  background: linear-gradient(90deg, #000, #505050);
+  color: $white;
+  padding: 4.5rem 0 2rem;
+  margin-top: auto;
+  position: relative;
+  border-top: 2px solid rgba($gold-primary, 0.2);
+  font-family: Marcellus, serif;
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba($gold-primary, 0.3), transparent);
+  }
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+.footerContent {
+  display: grid;
+  grid-template-columns: 2.2fr 1fr 1fr 1fr 1.3fr;
+  gap: 4rem;
+  margin-bottom: 4rem;
+  
+  @media (max-width: 1200px) {
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 3rem;
+  }
+  
+  @media (max-width: 968px) {
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+  }
+  
+  @media (max-width: 640px) {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+// Brand Section
+.brandSection {
+  max-width: 350px;
+  
+  @media (max-width: 968px) {
+    max-width: 100%;
+    grid-column: 1 / -1;
+  }
+}
+
+.logoContainer {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.logoImage {
+  height: 50px;
+  width: 126px;
+  object-fit: contain;
+  display: block;
+}
+
+.brandDescription {
+  color: rgba($white, 0.75);
+  line-height: 1.75;
+  margin: 0 0 2.5rem 0;
+  font-size: 0.9375rem;
+  text-align: left;
+  font-weight: 400;
+}
+
+.socialLinks {
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+  flex-wrap: wrap;
+}
+
+.socialLink {
+  color: rgba($white, 0.8);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  background: rgba($white, 0.06);
+  border: 1px solid rgba($white, 0.12);
+  position: relative;
+  
+  &:hover {
+    color: $white;
+    background: rgba($white, 0.12);
+    border-color: rgba($white, 0.4);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba($white, 0.25);
+  }
+  
+  svg {
+    width: 20px;
+    height: 20px;
+    position: relative;
+    z-index: 1;
+  }
+}
+
+.phoneLink {
+     background: rgb(255 255 255 / 12%);
+    border-color: rgb(255 255 255 / 30%);
+    color: #ffffff;
+  
+  &:hover {
+       background: rgb(255 255 255 / 12%);
+    border-color: rgb(255 255 255 / 30%);
+    color: #ffffff;
+  }
+}
+
+// Footer Sections
+.footerSection {
+  display: flex;
+  flex-direction: column;
+}
+
+.footerHeading {
+  font-size: 1.0625rem;
+  font-weight: 600;
+  margin: 0 0 1.5rem 0;
+  color: $white;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  position: relative;
+  padding-bottom: 0.875rem;
+  
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 40px;
+    height: 2px;
+    background: linear-gradient(90deg, $gold-primary 0%, $gold-secondary 100%);
+    border-radius: 1px;
+  }
+}
+
+.footerLinks {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+}
+
+.footerLink {
+  color: rgba($white, 0.75);
+  text-decoration: none;
+  font-size: 0.9375rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: inline-block;
+  line-height: 1.7;
+  position: relative;
+  font-weight: 400;
+  
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 1.5px;
+    background: linear-gradient(90deg, $gold-primary 0%, $gold-secondary 100%);
+    transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  &:hover {
+    color: $gold-primary;
+    
+    &::after {
+      width: 100%;
+    }
+  }
+}
+
+// Contact Section
+.contactList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.contactLink {
+  color: rgba($white, 0.75);
+  text-decoration: none;
+  font-size: 0.9375rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex; gap:0.5rem; align-items: center;
+  line-height: 1.7;
+  position: relative;
+  word-break: break-word;
+  font-weight: 400;
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 1.5px;
+    background: linear-gradient(90deg, $gold-primary 0%, $gold-secondary 100%);
+    transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  &:hover {
+    color: $gold-primary;
+    
+    &::after {
+      width: 100%;
+    }
+  }
+}
+
+// Footer Bottom
+.footerBottom {
+  border-top: 1px solid rgba($white, 0.12);
+  padding-top: 2.5rem;
+  text-align: center;
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba($white, 0.5), transparent);
+  }
+}
+
+.copyright {
+  color: rgba($white, 0.65);
+  font-size: 0.875rem;
+  margin: 0;
+  letter-spacing: 0.5px;
+  font-weight: 400;
+}
+
+// Floating WhatsApp Button
+.whatsappFloat {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 64px;
+  height: 64px;
+  background: linear-gradient(135deg, $whatsapp-green 0%, $whatsapp-green-dark 100%);
+  color: $white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 
+    0 6px 20px rgba($whatsapp-green, 0.4),
+    0 0 0 0 rgba($whatsapp-green, 0.7);
+  z-index: 999;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  animation: pulse 2s infinite;
+  border: 3px solid rgba($white, 0.2);
+  
+  &:hover {
+    background: linear-gradient(135deg, $whatsapp-green-dark 0%, $whatsapp-green 100%);
+    transform: scale(1.15) translateY(-4px);
+    box-shadow: 
+      0 10px 30px rgba($whatsapp-green, 0.6),
+      0 0 0 8px rgba($whatsapp-green, 0.2);
+    border-color: rgba($white, 0.4);
+  }
+  
+  &:active {
+    transform: scale(1.05);
+  }
+  
+  svg {
+    width: 30px;
+    height: 30px;
+    filter: drop-shadow(0 2px 4px rgba($black, 0.2));
+    transition: transform 0.3s ease;
+  }
+
+  &:hover svg {
+    transform: scale(1.1);
+  }
+  
+  @media (max-width: 768px) {
+    width: 58px;
+    height: 58px;
+    bottom: 20px;
+    right: 20px;
+    border-width: 2px;
+    
+    svg {
+      width: 26px;
+      height: 26px;
+    }
+  }
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 
+      0 6px 20px rgba($whatsapp-green, 0.4),
+      0 0 0 0 rgba($whatsapp-green, 0.7);
+  }
+  50% {
+    box-shadow: 
+      0 6px 25px rgba($whatsapp-green, 0.6),
+      0 0 0 4px rgba($whatsapp-green, 0.3);
+  }
+  100% {
+    box-shadow: 
+      0 6px 20px rgba($whatsapp-green, 0.4),
+      0 0 0 0 rgba($whatsapp-green, 0.7);
+  }
+}
+
+// Responsive Design
+@media (max-width: 1200px) {
+  .footerContent {
+    .footerSection:last-child {
+      grid-column: 1 / -1;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .footer {
+    padding: 3rem 0 1.5rem;
+  }
+  
+  .container {
+    padding: 0 1.5rem;
+  }
+  
+  .footerContent {
+    gap: 2rem;
+  }
+  
+  .brandDescription {
+    font-size: 0.9rem;
+  }
+  
+  .footerHeading {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .footerLink,
+  .contactLink {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer {
+    padding: 2.5rem 0 1rem;
+  }
+  
+  .container {
+    padding: 0 1rem;
+  }
+  
+  .logoImage {
+    height: 50px;
+    width: 100px;
+  }
+  
+  .socialLink {
+    width: 38px;
+    height: 38px;
+    
+    svg {
+      width: 18px;
+      height: 18px;
+    }
+  }
+}

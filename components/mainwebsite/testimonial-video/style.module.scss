@@ -1,0 +1,345 @@
+// Variables
+$gold-primary: #FFD700;
+$gold-secondary: #FFA500;
+$blue-primary: #000000;
+$blue-secondary: #3b82f6;
+$blue-dark: #0f172a;
+$white: #ffffff;
+$black: #000000;
+$gray-light: #f5f5f5;
+$gray-medium: #737373;
+$gray-dark: #404040;
+$peach-light: #FFF5EE;
+
+// Font Family
+$font-family: var(--font-montserrat), -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+
+.testimonialVideo {
+  padding: 3rem 1.5rem;
+  margin: 0rem auto;
+  max-width: 1400px;
+  font-family: $font-family;
+  background: linear-gradient(180deg, rgba($white, 1) 0%, rgba($gray-light, 0.15) 100%);
+  position: relative;
+
+  @media (max-width: 768px) {
+    padding: 2rem 1rem;
+    margin: 1rem auto;
+  }
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.title {
+  font-size: 3rem;
+  font-weight: 800;
+  color: $blue-dark;
+  margin-bottom: 3.5rem;
+  text-align: center;
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  padding-bottom: 1.25rem;
+  line-height: 1.2;
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 5px;
+    background: linear-gradient(90deg, $gold-primary 0%, $gold-secondary 100%);
+    border-radius: 3px;
+    box-shadow: 0 2px 8px rgba($gold-primary, 0.4);
+  }
+
+  @media (max-width: 768px) {
+    font-size: 2.5rem;
+    margin-bottom: 2.5rem;
+    padding-bottom: 1rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 2rem;
+  }
+}
+
+.videoCard {
+  padding: 0.75rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  animation: fadeIn 0.6s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.videoWrapper {
+  border-radius: 20px;
+  overflow: hidden;
+  height: 400px;
+  position: relative;
+  box-shadow: 0 6px 20px rgba($black, 0.2);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  background-color: $black;
+  border: 3px solid rgba($gold-primary, 0.1);
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba($gold-primary, 0.1) 0%, transparent 50%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  &:hover {
+    transform: translateY(-6px) scale(1.02);
+    box-shadow: 0 12px 32px rgba($black, 0.3);
+    border-color: rgba($gold-primary, 0.4);
+
+    &::before {
+      opacity: 1;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    height: 340px;
+  }
+
+  @media (max-width: 640px) {
+    height: 300px;
+  }
+}
+
+.video {
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 20px;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.videoThumbnail {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  overflow: hidden;
+  border-radius: 20px;
+}
+
+.thumbnailImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.3s ease;
+}
+
+.videoThumbnail:hover .thumbnailImage {
+  transform: scale(1.05);
+}
+
+.playButtonOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.3);
+  transition: background 0.3s ease;
+  z-index: 2;
+}
+
+.videoThumbnail:hover .playButtonOverlay {
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.playButton {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  outline: none;
+  transition: transform 0.3s ease;
+  z-index: 3;
+
+  &:hover {
+    transform: scale(1.15);
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+
+  svg {
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.5));
+  }
+}
+
+.videoInfo {
+  background: linear-gradient(135deg, rgba($gold-primary, 0.12) 0%, rgba($gold-secondary, 0.08) 100%);
+  padding: 1.75rem 1.25rem;
+  margin-top: 0.75rem;
+  border-radius: 16px;
+  border: 2px solid rgba($gold-primary, 0.25);
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba($gold-primary, 0.15);
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba($white, 0.3), transparent);
+    transition: left 0.5s;
+  }
+
+  &:hover {
+    background: linear-gradient(135deg, rgba($gold-primary, 0.18) 0%, rgba($gold-secondary, 0.12) 100%);
+    border-color: rgba($gold-primary, 0.4);
+    box-shadow: 0 4px 12px rgba($gold-primary, 0.25);
+    transform: translateY(-2px);
+
+    &::before {
+      left: 100%;
+    }
+  }
+
+  @media (max-width: 768px) {
+    padding: 1.5rem 1rem;
+  }
+}
+
+.testimonialText {
+  font-size: 1.1875rem;
+  color: $blue-dark;
+  font-weight: 600;
+  margin: 0 0 1rem 0;
+  line-height: 1.7;
+  position: relative;
+  z-index: 1;
+
+  @media (max-width: 768px) {
+    font-size: 1.0625rem;
+    margin-bottom: 0.875rem;
+  }
+}
+
+.testimonialName {
+  font-size: 1.0625rem;
+  color: $blue-primary;
+  font-style: italic;
+  font-weight: 600;
+  margin: 0;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+
+  &::before {
+    content: "—";
+    margin-right: 0.5rem;
+    color: $gold-primary;
+    font-weight: 700;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 1rem;
+  }
+}
+
+// Global styles for carousel dots - scoped within testimonialVideo
+.testimonialVideo :global(.react-multi-carousel-dot-list) {
+  margin-top: 2.5rem !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  gap: 0.5rem !important;
+  padding: 0 !important;
+  list-style: none !important;
+}
+
+.testimonialVideo :global(.react-multi-carousel-dot) {
+  button {
+    background-color: rgba($blue-dark, 0.25) !important;
+    border: 2px solid rgba($blue-dark, 0.1) !important;
+    width: 12px !important;
+    height: 12px !important;
+    border-radius: 50% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    cursor: pointer !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    outline: none !important;
+
+    &:hover {
+      background-color: rgba($gold-primary, 0.5) !important;
+      border-color: rgba($gold-primary, 0.3) !important;
+      transform: scale(1.2) !important;
+    }
+  }
+
+  &.react-multi-carousel-dot--active button {
+    background-color: $gold-primary !important;
+    border-color: $gold-primary !important;
+    width: 32px !important;
+    height: 12px !important;
+    border-radius: 6px !important;
+    box-shadow: 0 2px 8px rgba($gold-primary, 0.4) !important;
+    transform: scale(1) !important;
+  }
+}
+
+.loadingState,
+.errorState {
+  text-align: center;
+  padding: 4rem 2rem;
+  color: $gray-dark;
+  font-size: 1.125rem;
+  font-family: $font-family;
+
+  @media (max-width: 768px) {
+    padding: 3rem 1.5rem;
+    font-size: 1rem;
+  }
+}
+
+.loadingState {
+  color: $blue-dark;
+  font-weight: 500;
+}
+
+.errorState {
+  color: $gray-medium;
+  font-style: italic;
+}
+

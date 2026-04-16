@@ -1,0 +1,1474 @@
+// =====================================================
+// PREMIUM SAAS HEADER STYLES (Refactored Production)
+// =====================================================
+
+// =====================
+// Design Tokens
+// =====================
+$gold-primary: #ffd700;
+$gold-secondary: #f59e0b;
+
+$blue-primary: #000000;
+$blue-secondary: #3b82f6;
+$blue-dark: #0f172a;
+
+$black: #000000;
+$white: #ffffff;
+
+$gray-50: #f8fafc;
+$gray-100: #f8f9fa;
+$gray-200: #e5e7eb;
+$gray-300: #d1d5db;
+$gray-400: #9ca3af;
+$gray-500: #6b7280;
+$gray-700: #404040;
+
+$peach-light: #fff5e6;
+
+$mobile-header-bg: #f5f0e8;
+$mobile-header-border: #e8e4dc;
+
+$font-family: var(--font-montserrat), -apple-system, BlinkMacSystemFont, "Segoe UI",
+  "Roboto", "Oxygen", "Ubuntu", "Cantarell", sans-serif;
+
+// =====================
+// Reusable Mixins
+// =====================
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin transition($props: all) {
+  transition: $props 0.25s ease;
+}
+
+@mixin soft-card {
+  background: rgba($white, 0.98);
+  border: 1px solid rgba($gray-200, 0.9);
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+}
+
+@mixin focus-ring($color: $gold-primary) {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba($color, 0.18);
+}
+
+@mixin desktop-only {
+  @media (max-width: 1024px) {
+    display: none !important;
+  }
+}
+
+@mixin mobile-only {
+  display: none;
+
+  @media (max-width: 1024px) {
+    display: flex;
+  }
+}
+
+// =====================
+// Root Header
+// =====================
+.header {
+  position: relative;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  width: 100%;
+  font-family: $font-family;
+}
+
+.headerTop {
+  background-color: $white;
+}
+
+// =====================
+// Main Header
+// =====================
+.mainHeader {
+  background: linear-gradient(180deg, #050505 0%, #0d0d0d 100%);
+  border-bottom: 1px solid rgba($gold-primary, 0.16);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+
+  @media (max-width: 1024px) {
+    background: $mobile-header-bg;
+    box-shadow: none;
+    border-bottom: 1px solid $mobile-header-border;
+    border-top: 1px solid rgba($mobile-header-border, 0.8);
+  }
+}
+
+.container {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0.75rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+  position: relative;
+
+  @media (max-width: 1200px) {
+    padding: 0.75rem 1.25rem;
+    gap: 1rem;
+  }
+
+  @media (max-width: 1024px) {
+    padding: 0.75rem 1rem;
+    gap: 0.5rem;
+  }
+
+  @media (max-width: 480px) {
+    padding: 0.7rem 0.85rem;
+  }
+}
+
+// =====================
+// Logo
+// =====================
+.logoSection {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  z-index: 1001;
+
+  @media (max-width: 1024px) {
+    flex: 1;
+    justify-content: center;
+    order: 2;
+    min-width: 0;
+  }
+}
+
+.logoLink {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  @include transition(opacity);
+
+  &:hover {
+    opacity: 0.9;
+  }
+}
+
+.logoImage {
+  height: 72px;
+  width: 128px;
+  object-fit: contain;
+  display: block;
+
+  @media (max-width: 1024px) {
+    height: 44px;
+    width: auto;
+    max-width: 120px;
+  }
+
+  @media (max-width: 480px) {
+    height: 40px;
+  }
+}
+
+// =====================
+// Search
+// =====================
+.searchSection {
+  flex: 1;
+  max-width: 480px;
+  margin: 0 auto;
+
+  @media (max-width: 1024px) {
+    display: none;
+  }
+}
+
+.searchContainer {
+  position: relative;
+  width: 100%;
+}
+
+.searchInput {
+  width: 100%;
+  padding: 0.75rem 2.75rem 0.75rem 1rem;
+  border: 1px solid rgba($gray-200, 0.9);
+  border-radius: 14px;
+  background: rgba($white, 0.98);
+  color: $blue-dark;
+  font-size: 0.95rem;
+  font-family: $font-family;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  @include transition();
+
+  &::placeholder {
+    color: $gray-400;
+  }
+
+  &:focus {
+    border-color: rgba($gold-primary, 0.7);
+    @include focus-ring($gold-primary);
+  }
+}
+
+.searchIcon {
+  position: absolute;
+  right: 0.95rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: $gray-400;
+  pointer-events: none;
+}
+
+// =====================
+// Gender Switch (Desktop)
+// =====================
+.genderSelection {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-right: 0.5rem;
+
+  @media (max-width: 1024px) {
+    display: none;
+  }
+}
+
+.genderButton {
+  position: relative;
+  background: transparent;
+  border: 1px solid transparent;
+  color: rgba($white, 0.85);
+  font-size: 0.9rem;
+  font-weight: 600;
+  font-family: $font-family;
+  cursor: pointer;
+  padding: 0.55rem 0.85rem;
+  border-radius: 999px;
+  @include transition();
+
+  &:hover {
+    color: $gold-primary;
+    background: rgba($gold-primary, 0.08);
+    border-color: rgba($gold-primary, 0.18);
+  }
+}
+.genderButtonActive {
+  color: $blue-dark;
+  background: linear-gradient(135deg, $gold-primary 0%, rgba($gold-secondary, 0.95) 100%);
+  box-shadow: 0 6px 16px rgba($gold-primary, 0.22);
+}
+
+// =====================
+// Desktop Navigation
+// =====================
+.navSection {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  flex-shrink: 0;
+
+  @media (max-width: 1024px) {
+    display: none;
+  }
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+}
+
+.navList {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.navItem {
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    height: 0.75rem;
+    background: transparent;
+  }
+}
+
+.navLink {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.65rem 0;
+  color: rgba($white, 0.9);
+  text-decoration: none;
+  text-transform: uppercase;
+  white-space: nowrap;
+  font-size: 0.84rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  @include transition(color);
+
+  &:hover {
+    color: $gold-primary;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0.15rem;
+    width: 0;
+    height: 2px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, $gold-primary, $gold-secondary);
+    @include transition(width);
+  }
+
+  &:hover::after {
+    width: 100%;
+  }
+}
+
+.navLinkActive {
+  color: $gold-primary;
+
+  &::after {
+    width: 100%;
+  }
+}
+
+.dropdownArrow {
+  @include transition(transform);
+}
+
+.navItem:hover .dropdownArrow {
+  transform: rotate(180deg);
+}
+
+// =====================
+// Desktop Dropdown
+// =====================
+.dropdownMenu {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  left: 0;
+  min-width: 220px;
+  list-style: none;
+  margin: 0;
+  padding: 0.5rem 0;
+  border-radius: 14px;
+  background: $white;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.16);
+  z-index: 1000;
+  animation: fadeInDown 0.24s ease;
+}
+.cdropdownMenu{
+   position: absolute;
+  top: calc(100% + 0.5rem);
+  left: 0;
+  // min-width: 220px;
+  list-style: none;
+  margin: 0;
+  padding: 0.5rem 0;
+  border-radius: 14px;
+  background: $white;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.16);
+  z-index: 1000;display: grid;
+    grid: 1fr 1fr / 1fr 1fr;
+    min-width: 400px;
+  animation: fadeInDown 0.24s ease;
+}
+.cmdropdownMenu{position: absolute;
+    top: calc(100% + 0.5rem);
+    left: 0;
+    list-style: none;
+    margin: 0;
+    padding: 0.5rem 0;
+    border-radius: 14px;
+    background: #ffffff;
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.16);
+    z-index: 1000;
+    min-width: 800px;
+    animation: style_fadeInDown__ONm_9 0.24s 
+ease;}
+.cmdropdownMenu h6{margin-top: 10px;font-weight: 600;}
+.cmdropdownMenu ul{margin-top: 15px; border-top: 1px solid #e0e0e0;}
+.mdropdownLink{
+  display: flex;gap: 10px;
+   padding: 0.4rem 0rem;align-items: center;
+  color: $blue-dark;
+  text-decoration: none;
+  font-size: 0.93rem;
+  font-weight: 500;
+  font-family: $font-family;
+}
+.dropdownLink {
+  display: block;
+  padding: 0.4rem 1.1rem;
+  color: $blue-dark;
+  text-decoration: none;
+  font-size: 0.93rem;
+  font-weight: 500;
+  font-family: $font-family;
+  @include transition();
+
+  &:hover {
+    background: rgba($gold-primary, 0.08);
+    color: $blue-primary;
+    padding-left: 1.35rem;
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// =====================
+// Desktop Action Buttons
+// =====================
+.actionButtons {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  justify-content: flex-end;
+
+  @media (max-width: 1024px) {
+    display: none;
+  }
+}
+
+.iconGroup {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.iconButton,
+.cartButton {
+  @include flex-center;
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  color: $white;
+  text-decoration: none;
+  background: rgba($white, 0.03);
+  border: 1px solid rgba($white, 0.18);
+  @include transition();
+
+  &:hover {
+    color: $gold-primary;
+    border-color: rgba($gold-primary, 0.35);
+    background: rgba($gold-primary, 0.08);
+    transform: translateY(-1px);
+  }
+
+  svg {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+.enquiryButton {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba($gold-primary, 0.6);
+  padding: 0.75rem 1rem;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 0.92rem;
+  font-family: $font-family;
+  white-space: nowrap;
+  cursor: pointer;
+  color: $blue-dark;
+  background: linear-gradient(135deg, $gold-primary 0%, rgba($gold-secondary, 0.95) 100%);
+  box-shadow: 0 10px 24px rgba($gold-primary, 0.22);
+  @include transition();
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    left: -100%;
+    background: linear-gradient(90deg, transparent, rgba($white, 0.28), transparent);
+    @include transition(left);
+  }
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 28px rgba($gold-primary, 0.3);
+
+    &::before {
+      left: 100%;
+    }
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+.loginButton {
+  padding: 0.75rem 1rem;
+  border-radius: 12px;
+  border: 1px solid rgba($white, 0.18);
+  background: rgba($white, 0.03);
+  color: $white;
+  font-weight: 600;
+  font-size: 0.92rem;
+  font-family: $font-family;
+  white-space: nowrap;
+  cursor: pointer;
+  @include transition();
+
+  &:hover {
+    background: rgba($white, 0.08);
+    border-color: rgba($white, 0.28);
+    transform: translateY(-1px);
+  }
+}
+
+.cartButton {
+  position: relative;
+}
+
+.cartCount {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 5px;
+  border-radius: 999px;
+  background: $gold-primary;
+  color: $blue-dark;
+  font-size: 0.72rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.concernsNav ul{    display: grid;
+    grid: 1fr 1fr / 1fr 1fr;
+    min-width: 400px;}
+// =====================
+// Mobile Header Icons
+// =====================
+.mobileHeaderIcons {
+  display: none;
+
+  @media (max-width: 1024px) {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 0.35rem;
+    order: 3;
+    flex-shrink: 0;
+  }
+}
+
+.mobileHeaderIcon,
+.mobileHeaderCart {
+  @include flex-center;
+  position: relative;
+  width: 42px;
+  height: 42px;
+  min-width: 42px;
+  min-height: 42px;
+  border: none;
+  border-radius: 12px;
+  background: transparent;
+  color: $black;
+  text-decoration: none;
+  cursor: pointer;
+  @include transition();
+
+  &:hover {
+    background: rgba($black, 0.05);
+    color: $gray-700;
+  }
+
+  &:active {
+    background: rgba($black, 0.08);
+  }
+}
+
+.mobileHeaderCartCount {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 5px;
+  border-radius: 999px;
+  background: $gold-primary;
+  color: $blue-dark;
+  font-size: 0.68rem;
+  font-weight: 800;
+  line-height: 18px;
+  text-align: center;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+}
+
+// =====================
+// Mobile Menu Button
+// =====================
+.mobileMenuButton {
+  display: none;
+  order: 1;
+  padding: 0.4rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 1001;
+
+  @media (max-width: 1024px) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 24px;
+  height: 20px;
+  background: transparent;
+  border: none;
+  padding: 0;
+
+  span {
+    width: 100%;
+    height: 2.5px;
+    border-radius: 999px;
+    background: $black;
+    transform-origin: center;
+    @include transition();
+  }
+
+  &.hamburgerOpen {
+    span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 6px);
+    }
+
+    span:nth-child(2) {
+      opacity: 0;
+      transform: translateX(-8px);
+    }
+
+    span:nth-child(3) {
+      transform: rotate(-45deg) translate(5px, -6px);
+    }
+  }
+}
+
+// =====================
+// Mobile Drawer Overlay
+// =====================
+.mobileMenuOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 10001;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  animation: fadeIn 0.25s ease;
+}
+
+.mobileMenu {
+  position: relative;
+  width: 86%;
+  max-width: 420px;
+  height: 100vh;
+  overflow-y: auto;
+  background: $white;
+  border-right: 1px solid rgba($gray-200, 0.5);
+  box-shadow: 8px 0 32px rgba(0, 0, 0, 0.2);
+  animation: slideInLeft 0.3s ease;
+  display: flex;
+  flex-direction: column;
+
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: rgba($gray-400, 0.45);
+    border-radius: 999px;
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-100%);
+  }
+
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+// =====================
+// Mobile Drawer Header
+// =====================
+.mobileMenuHeader {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.25rem;
+  background: rgba($white, 0.92);
+  border-bottom: 1px solid rgba($gray-200, 0.8);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.mobileLogo {
+  height: 42px;
+  width: auto;
+  object-fit: contain;
+}
+
+.mobileMenuClose {
+  @include flex-center;
+  position: absolute;
+  top: 0.85rem;
+  right: 1rem;
+  width: 38px;
+  height: 38px;
+  border-radius: 999px;
+  border: 1px solid rgba($gray-200, 0.8);
+  background: $white;
+  color: $gray-700;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  @include transition();
+
+  &:hover {
+    color: $blue-primary;
+    border-color: rgba($blue-primary, 0.3);
+    background: rgba($blue-primary, 0.04);
+    transform: rotate(90deg);
+  }
+
+  svg {
+    width: 18px;
+    height: 18px;
+    stroke-width: 2.4;
+  }
+}
+
+// =====================
+// Mobile Drawer Content
+// =====================
+.mobileMenuContent {
+  flex: 1;
+  padding: 1rem;
+  overflow-y: auto;
+  background: $white;
+}
+
+.mobileTopButtons {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+
+.mobileTopButton {
+  @include flex-center;
+  flex-direction: column;
+  gap: 0.45rem;
+  padding: 0.75rem 0.5rem;
+  border: 1px solid rgba($gray-200, 0.8);
+  border-radius: 14px;
+  background: #f7f7f7;
+  color: $gray-700;
+  text-decoration: none;
+  font-size: 0.8rem;
+  font-weight: 600;
+  font-family: $font-family;
+  cursor: pointer;
+  @include transition();
+
+  &:hover {
+    background: #efefef;
+    color: $blue-dark;
+    transform: translateY(-1px);
+  }
+
+  svg {
+    width: 22px;
+    height: 22px;
+    flex-shrink: 0;
+  }
+}
+
+// =====================
+// Mobile Gender
+// =====================
+.mobileGenderSelection {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  border-radius: 16px;
+  background: rgba($gray-100, 0.55);
+  border: 1px solid rgba($gray-200, 0.6);
+}
+
+.mobileGenderButton {
+  flex: 1;
+  padding: 0.85rem 1rem;
+  border: 1px solid rgba($gray-300, 0.9);
+  border-radius: 12px;
+  background: $white;
+  color: $gray-700;
+  font-size: 0.92rem;
+  font-weight: 600;
+  font-family: $font-family;
+  cursor: pointer;
+  @include transition();
+
+  &:hover {
+    border-color: rgba($blue-primary, 0.35);
+    background: rgba($blue-primary, 0.05);
+  }
+}
+
+.mobileGenderButtonActive {
+  background: linear-gradient(135deg, rgba($blue-primary, 0.12), rgba($blue-secondary, 0.08));
+  border-color: rgba($blue-primary, 0.45);
+  color: $blue-primary;
+  box-shadow: 0 0 0 3px rgba($blue-primary, 0.08);
+}
+
+// =====================
+// Mobile Navigation
+// =====================
+.mobileNav {
+  margin-bottom: 1rem;
+}
+
+.mobileNavList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.mobileNavItem {
+  width: 100%;
+}
+
+.mobileNavLink {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.9rem 0;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba($gray-200, 0.55);
+  color: $black;
+  text-decoration: none;
+  text-transform: uppercase;
+  text-align: left;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  font-family: $font-family;
+  cursor: pointer;
+  @include transition(color);
+
+  &:hover {
+    color: $blue-dark;
+  }
+}
+
+.mobileNavChevron,
+.mobileDropdownArrow {
+  flex-shrink: 0;
+  margin-left: auto;
+  color: $gray-500;
+  @include transition(transform);
+}
+
+.mobileNavChevronOpen {
+  transform: rotate(90deg);
+}
+
+.mobileDropdownArrowOpen {
+  transform: rotate(180deg);
+}
+
+.mobileNavSecondary {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.25rem;
+
+  .mobileNavLink {
+    padding: 0.9rem 0;
+  }
+}
+
+.mobileNavFree {
+  margin-left: auto;
+  margin-right: 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: none;
+  color: #dc2626;
+}
+
+// =====================
+// Mobile Dropdown
+// =====================
+.mobileDropdownMenu {
+  list-style: none;
+  margin: 0 0 0.75rem 0;
+  padding: 0.5rem 0 0.5rem 1rem;
+  border-left: 2px solid rgba($gray-200, 0.8);
+  animation: slideDown 0.24s ease;
+}
+
+.mobileDropdownLink {
+  display: block;
+  margin-bottom: 0.25rem;
+  padding: 0.6rem 1rem;
+  border-left: 3px solid transparent;
+  border-radius: 10px;
+  color: $gray-700;
+  text-decoration: none;
+  font-size: 0.92rem;
+  font-weight: 500;
+  font-family: $font-family;
+  @include transition();
+
+  &:hover {
+    color: $blue-primary;
+    background: rgba($blue-primary, 0.06);
+    border-left-color: $blue-primary;
+    transform: translateX(3px);
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// =====================
+// Mobile CTA Buttons
+// =====================
+.mobileActionButtons {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba($gray-200, 0.6);
+}
+
+.mobileCartButton,
+.mobileLoginButton,
+.mobileEnquiryButton {
+  width: 100%;
+  border-radius: 14px;
+  font-family: $font-family;
+  @include transition();
+}
+
+.mobileCartButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 0.95rem 1.25rem;
+  border: 1px solid rgba($gray-200, 0.9);
+  background: $white;
+  color: $blue-dark;
+  text-decoration: none;
+  font-size: 0.98rem;
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+
+  &:hover {
+    background: rgba($gray-100, 0.7);
+    border-color: rgba($gold-primary, 0.4);
+  }
+
+  &:active {
+    transform: scale(0.99);
+  }
+}
+
+.mobileCartButtonIcon {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $blue-dark;
+}
+
+.mobileCartButtonLabel {
+  flex: 1;
+  text-align: left;
+}
+
+.mobileCartCount {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 5px;
+  border-radius: 999px;
+  background: $gold-primary;
+  color: $blue-dark;
+  font-size: 0.68rem;
+  font-weight: 800;
+  line-height: 18px;
+  text-align: center;
+}
+
+.mobileEnquiryButton {
+  padding: 1rem 1.25rem;
+  border: 1px solid rgba($gold-primary, 0.6);
+  background: linear-gradient(135deg, $gold-primary 0%, rgba($gold-secondary, 0.95) 100%);
+  color: $blue-dark;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 10px 22px rgba($gold-primary, 0.22);
+
+  &:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 14px 24px rgba($gold-primary, 0.28);
+  }
+}
+
+.mobileLoginButton {
+  padding: 1rem 1.25rem;
+  border: 1px solid rgba($gray-200, 0.9);
+  background: transparent;
+  color: $blue-dark;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+
+  &:hover {
+    background: rgba($gray-100, 0.55);
+    border-color: rgba($gray-300, 0.9);
+  }
+}
+
+// =====================
+// Mobile Promo / Cards
+// =====================
+.mobileSkinCard {
+  position: relative;
+  display: block;
+  min-height: 160px;
+  margin-bottom: 1.25rem;
+  border-radius: 18px;
+  overflow: hidden;
+  text-decoration: none;
+  color: $black;
+}
+
+.mobileSkinCardBg {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(135deg, rgba($gray-400, 0.12) 0%, rgba($gray-100, 0.9) 100%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%23f0f0f0'/%3E%3Cstop offset='100%25' stop-color='%23e5e5e5'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect fill='url(%23g)' width='400' height='300'/%3E%3C/svg%3E")
+      center / cover;
+}
+
+.mobileSkinCardContent {
+  position: relative;
+  min-height: 160px;
+  padding: 1.35rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+}
+
+.mobileSkinCardTitle {
+  margin: 0 0 0.3rem;
+  font-size: 1.08rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.mobileSkinCardSubtitle {
+  margin: 0 0 0.9rem;
+  font-size: 0.87rem;
+  color: $gray-700;
+}
+
+.mobileSkinCardCta {
+  display: inline-block;
+  padding: 0.65rem 1rem;
+  border-radius: 10px;
+  background: $gray-700;
+  color: $white;
+  font-size: 0.86rem;
+  font-weight: 600;
+  @include transition(background);
+
+  .mobileSkinCard:hover & {
+    background: #2f2f2f;
+  }
+}
+
+// =====================
+// Mobile Social / App
+// =====================
+.mobileFollowSection,
+.mobileAppSection {
+  margin-top: 0.5rem;
+  padding: 0.6rem 0;
+  border-top: 1px solid rgba($gray-200, 0.55);
+}
+
+.mobileFollowTitle {
+  margin: 0;
+  color: $black;
+  font-size: 0.94rem;
+  font-weight: 600;
+  font-family: $font-family;
+}
+
+.mobileSocialIcons,
+.mobileAppIcons {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  padding: 0.7rem 0;
+}
+
+.mobileSocialIcon,
+.mobileAppIcon {
+  @include flex-center;
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  border: 1px solid rgba($gray-700, 0.6);
+  color: $black;
+  @include transition();
+
+  &:hover {
+    color: $blue-dark;
+    border-color: rgba($blue-dark, 0.55);
+    background: rgba($blue-dark, 0.04);
+  }
+}
+
+.mobileAppIcon {
+  width: 44px;
+  height: 44px;
+}
+
+// =====================
+// Mega Menu
+// =====================
+.megaWrapper {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  left: 0;
+  min-width: 70vw;
+  padding: 1.5rem 2rem;
+  border-radius: 18px;
+  background: $white;
+  border: 1px solid rgba($gray-200, 0.8);
+  box-shadow: 0 24px 50px rgba(0, 0, 0, 0.12);
+  z-index: 1000;
+}
+
+// Category
+.categoryHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin-bottom: 0.9rem;
+}
+
+.categoryIcon {
+  width: 28px;
+  height: 28px;
+}
+
+// Service
+.serviceItem {
+  margin-bottom: 0.65rem;
+}
+
+.serviceLink {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.45rem 0;
+  font-weight: 500;
+  color: $blue-dark;
+  text-decoration: none;
+  @include transition();
+
+  &:hover {
+    color: $blue-secondary;
+    transform: translateX(2px);
+  }
+}
+
+.serviceIcon {
+  width: 22px;
+  height: 22px;
+}
+
+// Submenu
+.subMenu {
+  padding-left: 2rem;
+  font-size: 0.82rem;
+  color: $gray-500;
+}
+
+// Gender Switch (Mega Menu)
+.genderSwitch {
+  display: flex;
+  gap: 0.65rem;
+  margin-bottom: 1rem;
+
+  button {
+    padding: 0.45rem 0.9rem;
+    border-radius: 999px;
+    border: 1px solid rgba($gray-300, 0.9);
+    background: $white;
+    color: $gray-700;
+    cursor: pointer;
+    @include transition();
+
+    &:hover {
+      border-color: rgba($black, 0.4);
+    }
+
+    &.active {
+      background: $black;
+      color: $white;
+      border-color: $black;
+    }
+  }
+}
+
+// =====================
+// Modal
+// =====================
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  animation: fadeIn 0.3s ease;
+
+  @media (max-width: 768px) {
+    padding: 1rem;
+  }
+}
+
+.modalContent {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  max-height: 92vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  border-radius: 24px;
+  background: linear-gradient(135deg, rgba($gray-100, 0.96) 0%, rgba($white, 0.98) 100%);
+  border: 1px solid rgba($gray-200, 0.8);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.35);
+  animation: slideUpScale 0.32s ease;
+
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: rgba($gray-400, 0.45);
+    border-radius: 999px;
+  }
+
+  @media (max-width: 768px) {
+    max-width: 100%;
+    max-height: 96vh;
+    border-radius: 18px;
+  }
+}
+
+@keyframes slideUpScale {
+  from {
+    opacity: 0;
+    transform: translateY(24px) scale(0.97);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.modalCloseButton {
+  @include flex-center;
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+  z-index: 10;
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  border: 1px solid rgba($gray-200, 0.8);
+  background: $white;
+  color: $gray-700;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  @include transition();
+
+  &:hover {
+    color: $blue-dark;
+    transform: rotate(90deg) scale(1.04);
+  }
+
+  svg {
+    width: 18px;
+    height: 18px;
+    stroke-width: 2.4;
+  }
+}
+
+.modalHeader {
+  position: relative;
+  overflow: hidden;
+  padding: 2.75rem 2.25rem 1.75rem;
+  text-align: center;
+  border-bottom: 1px solid rgba($gray-200, 0.7);
+  background: linear-gradient(135deg, rgba($gray-100, 0.7) 0%, rgba($white, 0.9) 100%);
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 88px;
+    height: 3px;
+    transform: translateX(-50%);
+    border-radius: 999px;
+    background: linear-gradient(90deg, transparent, rgba($gray-400, 0.4), transparent);
+  }
+
+  @media (max-width: 768px) {
+    padding: 2.35rem 1.5rem 1.4rem;
+  }
+}
+
+.modalTitle {
+  margin: 0 0 0.75rem;
+  color: $blue-dark;
+  font-size: 2rem;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  font-family: $font-family;
+
+  @media (max-width: 768px) {
+    font-size: 1.65rem;
+  }
+}
+
+.modalSubtitle {
+  margin: 0;
+  color: $gray-700;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.6;
+  font-family: $font-family;
+}
+
+.modalBody {
+  flex: 1;
+  overflow-y: auto;
+  padding: 2rem 2.25rem 2.5rem;
+  background: rgba($gray-100, 0.35);
+
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: rgba($gray-400, 0.45);
+    border-radius: 999px;
+  }
+
+  @media (max-width: 768px) {
+    padding: 1.75rem 1.5rem 2rem;
+  }
+}
+
+// =====================
+// Utility Responsive Cleanups
+// =====================
+@media (max-width: 768px) {
+  .navSection,
+  .searchSection {
+    display: none;
+  }
+}

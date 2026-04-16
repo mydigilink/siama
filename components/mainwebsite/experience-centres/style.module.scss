@@ -1,0 +1,254 @@
+// Variables
+$gold-primary: #FFD700;
+$blue-dark: #0f172a;
+$white: #ffffff;
+$gray-light: #f5f5f5;
+$gray-medium: #737373;
+$gray-dark: #404040;
+$green: #10B981;
+$red: #EF4444;
+$amber: #F59E0B;
+$peach-light: #FFF5E6;
+
+// Font Family
+$font-family: var(--font-montserrat), -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+
+.clinicsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 2rem;
+  width: 100%;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  @media (min-width: 1200px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.clinicCard {
+  background: $white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgba($gray-medium, 0.1);
+
+  &:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+    transform: translateY(-2px);
+  }
+}
+
+.imageContainer {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  background: $gray-light;
+}
+
+.clinicImage {
+  object-fit: cover;
+  transition: transform 0.3s ease;
+
+  .clinicCard:hover & {
+    transform: scale(1.05);
+  }
+}
+
+.statusBadge {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: rgba($white, 0.95);
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  font-family: $font-family;
+  backdrop-filter: blur(4px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.statusDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+
+  &.open {
+    background-color: $green;
+  }
+
+  &.closed {
+    background-color: $red;
+  }
+
+  &.openSoon {
+    background-color: $amber;
+  }
+}
+
+.statusText {
+  color: $blue-dark;
+  text-transform: capitalize;
+}
+
+.cardContent {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  flex: 1;
+}
+
+.ratingSection {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.stars {
+  display: flex;
+  gap: 0.125rem;
+  align-items: center;
+}
+
+.star {
+  width: 16px;
+  height: 16px;
+}
+
+.ratingText {
+  font-size: 0.875rem;
+  color: $gray-medium;
+  font-weight: 500;
+  font-family: $font-family;
+}
+
+.clinicName {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: $blue-dark;
+  margin: 0;
+  font-family: $font-family;
+  line-height: 1.3;
+
+  @media (max-width: 768px) {
+    font-size: 1.125rem;
+  }
+}
+
+.addressSection,
+.hoursSection {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.icon {
+  color: $gray-medium;
+  flex-shrink: 0;
+  margin-top: 0.125rem;
+}
+
+.address,
+.hours {
+  font-size: 0.9375rem;
+  color: $gray-dark;
+  margin: 0;
+  line-height: 1.5;
+  font-family: $font-family;
+
+  @media (max-width: 768px) {
+    font-size: 0.875rem;
+  }
+}
+
+.servicesSection {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.servicesLabel {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: $blue-dark;
+  margin: 0;
+  font-family: $font-family;
+}
+
+.servicesList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.serviceTag {
+  font-size: 0.8125rem;
+  padding: 0.375rem 0.75rem;
+  background: rgba($gold-primary, 0.1);
+  color: $blue-dark;
+  border-radius: 6px;
+  font-weight: 500;
+  font-family: $font-family;
+  border: 1px solid rgba($gold-primary, 0.2);
+}
+
+.actionButtons {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: auto;
+  padding-top: 1rem;
+  border-top: 1px solid rgba($gray-medium, 0.1);
+
+  @media (max-width: 480px) {
+    flex-direction: column;
+  }
+}
+
+.actionBtn {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  border: 1px solid rgba($blue-dark, 0.2);
+  background: $white;
+  color: $blue-dark;
+  border-radius: 8px;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  font-family: $font-family;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover:not(:disabled) {
+    background: $blue-dark;
+    color: $white;
+    border-color: $blue-dark;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  &:active:not(:disabled) {
+    transform: translateY(0);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  @media (max-width: 480px) {
+    width: 100%;
+  }
+}
+
